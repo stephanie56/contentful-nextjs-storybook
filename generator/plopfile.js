@@ -26,7 +26,7 @@ module.exports = function (
         },
         {
           type: 'add',
-          path: '../components/{{properCase name}}/{{properCase name}}.stories.ts',
+          path: '../components/{{properCase name}}/{{properCase name}}.stories.tsx',
           templateFile: './componentTemplate/stories.hbs',
         },
       ];

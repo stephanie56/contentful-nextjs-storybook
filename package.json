@@ -9,7 +9,7 @@
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "dev:all": "concurrently \"npm:start\" \"npm:storybook\"",
+    "dev:all": "concurrently \"npm:dev\" \"npm:storybook\"",
     "gc": "plop component --plopfile ./generator/plopfile.js"
   },
   "dependencies": {
