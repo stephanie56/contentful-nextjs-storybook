@@ -1,0 +1,54 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+
+import { {{properCase name }} } from './{{properCase name}}';
+
+export default {
+  title: 'Components/{{properCase name}}',
+  component: {{ properCase name }},
+  parameters: {
+    layout: 'centered',
+    },
+  tags: ['autodocs'],
+};
+
+type Story = StoryObj<typeof {{properCase name }}>;
+
+export const Primary: Story = {
+  args: {
+    heading: 'My first heading!',
+  }
+};
+
+export const PrimaryOnDark: Story = {
+  ...Primary,
+  parameters: {
+    backgrounds: {
+      default: 'dark',
+    },
+  },
+};
+
+export const PrimaryOnBackground: Story = {
+  ...Primary,
+  parameters: {
+    backgrounds: {
+      default: 'dark',
+      values: [
+        { name: 'twitter', value: '#00aced' },
+        { name: 'facebook', value: '#3b5998' },
+      ],
+    },
+  },
+};
+
+// https://storybook.js.org/docs/react/essentials/viewport
+export const PrimaryOnMobileViewport: Story = {
+  ...Primary,
+  parameters: {
+    viewport: {
+      viewports: INITIAL_VIEWPORTS,
+      defaultViewport: 'iphone6',
+    },
+  },
+};
