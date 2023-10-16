@@ -13,11 +13,14 @@ const config: StorybookConfig = {
     "@storybook/addon-onboarding",
     "@storybook/addon-interactions",
     "@storybook/addon-designs", // design integration addon
+    '@storybook/addon-a11y',
   ],
   framework: {
     name: "@storybook/nextjs",
     options: {},
   },
+  // More https://storybook.js.org/docs/react/configure/images-and-assets
+  staticDirs: ['../public'], // configures the static asset folder in Storybook
   docs: {
     autodocs: "tag",
   },
