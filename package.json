@@ -13,10 +13,16 @@
     "gc": "plop component --plopfile ./generator/plopfile.js"
   },
   "dependencies": {
+    "@radix-ui/react-icons": "^1.3.0",
+    "@radix-ui/react-slot": "^1.0.2",
     "@storybook/addon-designs": "^7.0.5",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
     "next": "13.5.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "tailwind-merge": "^2.2.1",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^7.4.6",
