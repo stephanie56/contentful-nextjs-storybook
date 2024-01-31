@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Card,
   CardHeader,
   CardTitle,
   CardDescription,
   CardContent,
+  CardFooter,
 } from "../card/card";
 import { Avatar, AvatarFallback, AvatarImage } from "../avatar/avatar";
 import { Badge } from "../badge/badge";
+import { Button } from "../button/button";
 import { MapPin } from 'lucide-react';
 
 interface ProfileProps {
@@ -27,6 +29,13 @@ export const Profile = ({
   description,
   ...props
 }: ProfileProps) => {
+
+  const [availability, setAvailability] = useState(false);
+
+  const availabilityStatus = availability ? "Available" : "Unavailable";
+  const availabilityStatusEditMode = availability ? "Off the Clock" : "Ready to Work";
+  const availabilityStatusColor = availability ? "bg-green-100" : "";
+
   return (
     <Card className="overflow-hidden max-w-2xl mx-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto">
       <CardHeader>
@@ -40,7 +49,7 @@ export const Profile = ({
           <CardTitle className="text-xl">{fullName}</CardTitle>
         </div>
         <div className="flex justify-center">
-          <Badge variant="outline">Available</Badge>
+          <Badge variant="secondary" data-testid="availability-badge" className={availabilityStatusColor}>{availabilityStatus}</Badge>
         </div>
         <CardDescription className="flex justify-center gap-1">
         <MapPin size="18"/>
@@ -50,6 +59,9 @@ export const Profile = ({
       <CardContent className="text-gray-500">
       {description}
       </CardContent>
+      <CardFooter className="flex justify-center">
+          <Button data-testid="availability-toggle" onClick={() => setAvailability(!availability)}>{availabilityStatusEditMode}</Button>
+      </CardFooter>
     </Card>
   );
 };

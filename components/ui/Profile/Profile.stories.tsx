@@ -15,11 +15,10 @@ export default {
     },
   tags: ['autodocs'],
   args: {
-    profileImg: "https://github.com/shadcn.png",
     fullName: "Jane Doe",
     location: "3 miles away",
     description: "I'm a part-time dog walker in the North York area. Let me know if you need someone to walk your dog!",
-  }
+  },
 };
 
 type Story = StoryObj<typeof Profile>;

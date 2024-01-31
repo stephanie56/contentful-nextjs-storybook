@@ -14,6 +14,7 @@ const config: StorybookConfig = {
     "@storybook/addon-interactions",
     "@storybook/addon-designs", // design integration addon
     '@storybook/addon-a11y',
+    '@storybook/addon-interactions', // enable interaction testing addon
   ],
   framework: {
     name: "@storybook/nextjs",
