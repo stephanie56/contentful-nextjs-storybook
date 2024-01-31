@@ -27,14 +27,14 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@storybook/addon-a11y": "^7.4.6",
-    "@storybook/addon-essentials": "^7.4.6",
-    "@storybook/addon-interactions": "^7.4.6",
-    "@storybook/addon-links": "^7.4.6",
+    "@storybook/addon-a11y": "^7.6.12",
+    "@storybook/addon-essentials": "^7.6.12",
+    "@storybook/addon-interactions": "^7.6.12",
+    "@storybook/addon-links": "^7.6.12",
     "@storybook/addon-onboarding": "^1.0.8",
-    "@storybook/blocks": "^7.4.6",
-    "@storybook/nextjs": "^7.4.6",
-    "@storybook/react": "^7.4.6",
+    "@storybook/blocks": "^7.6.12",
+    "@storybook/nextjs": "^7.6.12",
+    "@storybook/react": "^7.6.12",
     "@storybook/testing-library": "^0.2.2",
     "@types/node": "^20",
     "@types/react": "^18",
@@ -46,7 +46,7 @@
     "eslint-plugin-storybook": "^0.6.15",
     "plop": "^4.0.0",
     "postcss": "^8",
-    "storybook": "^7.4.6",
+    "storybook": "^7.6.12",
     "tailwindcss": "^3",
     "typescript": "^5"
   }
