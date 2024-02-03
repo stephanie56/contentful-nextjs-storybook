@@ -16,17 +16,17 @@ module.exports = function (
       const actionsArray = [
         {
           type: 'add',
-          path: '../components/{{properCase name}}/index.ts',
+          path: '../components/ui/{{properCase name}}/index.ts',
           templateFile: './componentTemplate/index.hbs',
         },
         {
           type: 'add',
-          path: '../components/{{properCase name}}/{{properCase name}}.tsx',
+          path: '../components/ui/{{properCase name}}/{{properCase name}}.tsx',
           templateFile: './componentTemplate/component.hbs',
         },
         {
           type: 'add',
-          path: '../components/{{properCase name}}/{{properCase name}}.stories.tsx',
+          path: '../components/ui/{{properCase name}}/{{properCase name}}.stories.tsx',
           templateFile: './componentTemplate/stories.hbs',
         },
       ];
