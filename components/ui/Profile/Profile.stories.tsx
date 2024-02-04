@@ -18,6 +18,7 @@ export default {
     fullName: "Jane Doe",
     location: "3 miles away",
     description: "I'm a part-time dog walker in the North York area. Let me know if you need someone to walk your dog!",
+    editMode: true,
   },
 };
 

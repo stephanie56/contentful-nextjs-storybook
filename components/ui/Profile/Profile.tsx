@@ -12,11 +12,14 @@ import { Badge } from "../badge/badge";
 import { Button } from "../button/button";
 import { MapPin } from 'lucide-react';
 
-interface ProfileProps {
+export interface ProfileProps {
+  id: string;
   profileImg?: string;
   fullName: string;
   location: string;
   description?: string;
+  editMode?: boolean;
+  available?: boolean;
 }
 
 /**
@@ -27,14 +30,16 @@ export const Profile = ({
   fullName,
   location,
   description,
+  editMode,
+  available,
   ...props
 }: ProfileProps) => {
 
-  const [availability, setAvailability] = useState(false);
+  const [availability, setAvailability] = useState(available);
 
   const availabilityStatus = availability ? "Available" : "Unavailable";
   const availabilityStatusEditMode = availability ? "Off the Clock" : "Ready to Work";
-  const availabilityStatusColor = availability ? "bg-green-100" : "";
+  const availabilityStatusColor = availability ? "bg-green-50 text-green-700" : "";
 
   return (
     <Card className="overflow-hidden max-w-2xl mx-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto">
@@ -59,8 +64,15 @@ export const Profile = ({
       <CardContent className="text-gray-500">
       {description}
       </CardContent>
-      <CardFooter className="flex justify-center">
-          <Button data-testid="availability-toggle" onClick={() => setAvailability(!availability)}>{availabilityStatusEditMode}</Button>
+      <CardFooter>
+        {editMode && (
+          <Button
+            variant="secondary"
+            onClick={() => setAvailability(!availability)}
+          >
+            {availabilityStatusEditMode}
+          </Button>
+        )}
       </CardFooter>
     </Card>
   );
