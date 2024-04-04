@@ -1,51 +1,50 @@
-import Image from "next/image";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from "@/components/ui/card/card";
+import { getEntriesByContentType } from "@/lib/contentful";
 import { Inter } from "next/font/google";
-import { Profiles } from "../components/ui/profiles";
-import { useEffect, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
-  const [profilesData, setProfilesData] = useState([]);
-  const [loading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+export const getStaticProps = async (context: any) => {
+  const product = await getEntriesByContentType("product");
 
-  const isEmpty = profilesData.length === 0;
-
-  const fetchProfiles = async () => {
-    try {
-      const result = await fetch("http://localhost:3000/api/profiles");
-      const data = await result.json();
-      setProfilesData(data);
-    } catch (error) {
-      setError(error as any);
-    } finally {
-      setIsLoading(false);
-    }
+  return {
+    props: { product },
   };
+}
 
-  useEffect(() => {
-    fetchProfiles();
-  }, []);
-
+export default function Home({ product }: any) {
   return (
     <main
-      className={`flex min-h-screen flex-col items-center justify-between p-12 ${inter.className}`}
+      className={`flex min-h-screen flex-col items-center justify-start p-12 ${inter.className}`}
     >
-      {loading ? (
-        <h2 className="text-2xl mt-4">Loading...</h2>
-      ) : error ? (
-        <h2 className="text-2xl mt-4">Oops, there is an error.</h2>
-      ) : isEmpty ? (
-        <div>
-          <h2 className="text-2xl mt-4">
-            Hmm...This Space is Currently Empty.
-          </h2>
-          <p>There are no profiles to display at this time.</p>
+      <h1 className="text-4xl font-bold">Contentful Swagger Shop</h1>
+      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+          {
+            product.items.map((item: any) => {
+              return (
+                <Card key={item.sys.id}>
+                  <CardHeader>
+                    <CardTitle>{item.fields.productName}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription>
+                      <h3>Cost: {item.fields.price}</h3>
+                      <p>Instructor: {item.fields.authorName.fields.authorName}</p>
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              );
+            })
+          }
         </div>
-      ) : (
-        <Profiles profiles={profilesData} />
-      )}
+      </div>
     </main>
   );
 }
