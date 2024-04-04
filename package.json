@@ -1,5 +1,5 @@
 {
-  "name": "storybook-demo",
+  "name": "contentful-swagger-shop",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,7 +10,12 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "dev:all": "concurrently \"npm:dev\" \"npm:storybook\"",
-    "gc": "plop component --plopfile ./generator/plopfile.js"
+    "gc": "plop component --plopfile ./generator/plopfile.js",
+    "contentful": "contentful",
+    "contentful:create-content-type": "contentful space migration --space-id=$CONTENTFUL_SPACE_ID migrations/create-content-type-script.js -y",
+    "contentful:update-content-type": "contentful space migration --space-id=$CONTENTFUL_SPACE_ID migrations/update-content-type-script.js -y",
+    "contentful:fetch-content-type": "contentful space generate migration -s $CONTENTFUL_SPACE_ID -e master"
+
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.0.4",
@@ -42,6 +47,7 @@
     "@types/react-dom": "^18",
     "autoprefixer": "^10",
     "concurrently": "^8.2.1",
+    "contentful-cli": "^3.1.44",
     "eslint": "^8",
     "eslint-config-next": "13.5.4",
     "eslint-plugin-storybook": "^0.6.15",
